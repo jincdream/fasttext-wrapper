@@ -3,7 +3,8 @@ const { parentPort } = require('worker_threads');
 const fasttext = require('./build/Release/fasttext_wrapper');
 const FasttextWrapper = new fasttext.FasttextWrapper();
 
-console.log('load star')
+console.info('load star')
+console.info(path.resolve(__dirname,'../libraries/model/cc.en.300.bin'))
 console.time('load-model');
 FasttextWrapper.loadModel(path.resolve(__dirname,'../libraries/model/cc.en.300.bin'));
 console.timeEnd('load-model');
