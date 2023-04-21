@@ -11,8 +11,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
-
       - name: Set up Node.js version
         uses: actions/setup-node@v1
         with:
@@ -38,20 +36,21 @@ jobs:
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
     
     steps:
-    - name: Check cached model  
-      id: cache      
-      uses: actions/cache@v2
-      with:
-        path: libraries/model
-        key: ${{ runner.os }}-model-${{ hashFiles('libraries/model/cc.en.300.bin') }}
+      - uses: actions/checkout@v2
+      - name: Check cached model  
+        id: cache      
+        uses: actions/cache@v2
+        with:
+          path: libraries/model
+          key: ${{ runner.os }}-model-${{ hashFiles('libraries/model/cc.en.300.bin') }}
 
-    - name: Download FastText pre-trained model  
-      if: steps.cache.outputs.cache-hit != 'true'  
-      run: |
-        mkdir -p libraries/model
-        wget -O libraries/model/cc.en.300.bin.gz https://dl.fbaipublicfiles.com/fasttext/vectors-crawl/cc.en.300.bin.gz
-        gzip -d libraries/model/cc.en.300.bin.gz
-        rm -f libraries/model/cc.en.300.bin.gz
+      - name: Download FastText pre-trained model  
+        if: steps.cache.outputs.cache-hit != 'true'  
+        run: |
+          mkdir -p libraries/model
+          wget -O libraries/model/cc.en.300.bin.gz https://dl.fbaipublicfiles.com/fasttext/vectors-crawl/cc.en.300.bin.gz
+          gzip -d libraries/model/cc.en.300.bin.gz
+          rm -f libraries/model/cc.en.300.bin.gz
 
       - name: Download artifact from build job
         uses: actions/download-artifact@v2
