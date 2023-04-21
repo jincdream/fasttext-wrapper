@@ -22,7 +22,7 @@ make && make install
 cd ../../..
 
 # Configure node-gyp
-node-gyp configure
+node-gyp configure ./src
 
 # Build the addon
-node-gyp build
+node-gyp build ./src

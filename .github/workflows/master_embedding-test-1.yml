@@ -27,7 +27,9 @@ jobs:
       - name: Download FastText pre-trained model
         run: |
           mkdir -p ./libraries/model
-          wget -O ./libraries/model/cc.en.300.bin.gz https://dl.fbaipublicfiles.com/fasttext/vectors-crawl/cc.en.300.bin.gz    
+          wget -O ./libraries/model/cc.en.300.bin.gz https://dl.fbaipublicfiles.com/fasttext/vectors-crawl/cc.en.300.bin.gz
+          gzip -d ./libraries/model/cc.en.300.bin.gz
+          rm ./libraries/model/cc.en.300.bin.gz  
 
       - name: Prepare artifact
         run: |
