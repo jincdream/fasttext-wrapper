@@ -11,13 +11,13 @@ git clone https://github.com/facebookresearch/fastText.git
 cd fastText
 
 # Create a build directory and move into it
-sudo mkdir build && cd build
+mkdir build && cd build
 
-# Run cmake to configure the build
-sudo cmake ..
+# Run cmake to configure the build with custom install path
+cmake -DCMAKE_INSTALL_PREFIX=./build ..
 
 # Build fastText
-sudo make && make install
+make && make install
 
 mkdir -p ../../build/Release
 cp libfasttext.so ../../build/Release
