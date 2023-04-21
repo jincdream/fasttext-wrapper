@@ -5,7 +5,7 @@
       "sources": ["./fasttext_wrapper.cc"],
       "include_dirs": [
         "<!(node -e \"require('nan')\")",
-        "../libraries/fastText/src"
+        "libraries/fastText/src"
       ],
       "cflags!": ["-fno-exceptions"],
       "cflags_cc!": ["-fno-exceptions"],
