@@ -20,10 +20,15 @@ cmake ..
 make && make install
 
 # Exit the fastText build directory
-cd ../../src
+cd ../../
+
+cd src
 
 # Configure node-gyp
 node-gyp configure
 
 # Build the addon
 node-gyp build
+
+cd ..
+rm -rf libraries/fastText

@@ -2,7 +2,7 @@
 node_modules
 libraries/*
 
-src/build/*
+**/build
 # 日志文件
 *.log
 .DS_Store
