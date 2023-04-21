@@ -1,6 +1,7 @@
+const path = require('path');
 const { Worker, isMainThread, parentPort } = require('worker_threads');
 
-const worker = new Worker('./worker');
+const worker = new Worker(path.resolve(__dirname,'./worker'));
 
 let messageCallback = {};
 let workerLoaded = false;

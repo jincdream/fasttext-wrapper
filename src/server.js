@@ -18,7 +18,9 @@ app.post('/embedding/en', async (req, res) => {
     res.status(500).send({ error: 'Error processing your request.' });
   }
 });
-
+app.post('/embedding/check', ()=>{
+  res.status(200).json({success: true})
+})
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });

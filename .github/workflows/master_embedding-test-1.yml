@@ -23,13 +23,22 @@ jobs:
           npm install
           npm run build --if-present
           npm run test --if-present
-          
+
+      - name: Check cached model
+        id: cache      
+        uses: actions/cache@v2
+        with:
+          path: ./libraries/model
+          key: ${{ runner.os }}-model-${{ hashFiles('./libraries/model/cc.en.300.bin') }}
+    
+      
       - name: Download FastText pre-trained model
+        if: steps.cache.outputs.cache-hit != 'true'
         run: |
           mkdir -p ./libraries/model
           wget -O ./libraries/model/cc.en.300.bin.gz https://dl.fbaipublicfiles.com/fasttext/vectors-crawl/cc.en.300.bin.gz
           gzip -d ./libraries/model/cc.en.300.bin.gz
-          rm ./libraries/model/cc.en.300.bin.gz  
+          rm -r ./libraries/model/cc.en.300.bin.gz  
 
       - name: Prepare artifact
         run: |
