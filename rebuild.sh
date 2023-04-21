@@ -19,7 +19,7 @@ cmake ..
 # Build fastText
 make && make install
 
-cd ../../
+cd ../../../
 
 cd src
 
