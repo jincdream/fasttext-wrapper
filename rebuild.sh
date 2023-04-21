@@ -17,18 +17,14 @@ mkdir build && cd build
 cmake ..
 
 # Build fastText
-make && make install
+make && make install && cd ../../ && cd src
 
 # Exit the fastText build directory
-cd ../../
-
-cd src
 
 # Configure node-gyp
-node-gyp configure
+node-gyp configure && node-gyp build && cd .. && rm -rf libraries/fastText
 
 # Build the addon
-node-gyp build
 
-cd ..
-rm -rf libraries/fastText
+
+
