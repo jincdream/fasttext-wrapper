@@ -17,7 +17,7 @@ mkdir build && cd build
 cmake ..
 
 # Build fastText
-make && make install && cd ../../ && cd src
+make && make install && cd /src
 
 # Exit the fastText build directory
 
