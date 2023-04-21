@@ -19,6 +19,9 @@ cmake ..
 # Build fastText
 make && make install
 
+mkdir -p ../../build/Release
+cp libfasttext.so ../../build/Release
+
 cd ../../../
 
 cd src

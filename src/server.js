@@ -1,7 +1,8 @@
 const express = require('express');
+const path =require('path')
 const app = express();
 const port = process.env.PORT || 8080;
-const {embedding} = require('./embedding');
+const {embedding} = require(path.resolve(__dirname,'./embedding'));
 
 app.use(express.json());
 app.use('/',(req,res)=>{res.json({})})
