@@ -72,9 +72,3 @@ jobs:
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_6DAF8E2F90F44B518869EA61DBFE2395 }}
           package: .
-
-      - name: Install PM2
-        run: npm install pm2 -g
-
-      - name: Start server
-        run: pm2 start process.json
