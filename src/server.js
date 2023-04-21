@@ -5,7 +5,7 @@ const port = process.env.PORT || 8080;
 const {embedding} = require(path.resolve(__dirname,'./embedding'));
 
 app.use(express.json());
-app.use('/',(req,res)=>{res.json({})})
+app.get('/',(req,res)=>{res.json({})})
 app.post('/embedding/en', async (req, res) => {
   const { word } = req.body;
   if (!word) {
