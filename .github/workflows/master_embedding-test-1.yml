@@ -23,12 +23,22 @@ jobs:
           npm install
           npm run build --if-present
           npm run test --if-present
+          
+      - name: Download FastText pre-trained model
+        run: |
+          mkdir -p ./libraries/model
+          wget -O ./libraries/model/cc.en.300.bin.gz https://dl.fbaipublicfiles.com/fasttext/vectors-crawl/cc.en.300.bin.gz    
+
+      - name: Prepare artifact
+        run: |
+          mkdir artifact
+          rsync -av --exclude="binding.gyp" ./ ./artifact/
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
           name: node-app
-          path: .
+          path: ./artifact
 
   deploy:
     runs-on: ubuntu-latest
@@ -43,10 +53,7 @@ jobs:
         with:
           name: node-app
 
-      - name: Download FastText pre-trained model
-        run: |
-          mkdir -p ./libraries/model
-          wget -O ./libraries/model/cc.en.300.bin.gz https://dl.fbaipublicfiles.com/fasttext/vectors-crawl/cc.en.300.bin.gz
+      
 
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
