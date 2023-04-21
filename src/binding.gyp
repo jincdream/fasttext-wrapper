@@ -6,7 +6,7 @@
       "include_dirs": [
         "<!@(node -p \"require('node-addon-api').include\")",
         "<!(node -e \"require('nan')\")",
-        "<!(node -p \"require('path').join(__dirname, '../libraries/fastText/src')\")"  // Use an absolute path
+        "<!(node -p \"require('path').join(__dirname, '../libraries/fastText/src')\")"
       ],
       "dependencies": ["<!(node -p \"require('node-addon-api').gyp\")"],
       "cflags!": ["-fno-exceptions"],
