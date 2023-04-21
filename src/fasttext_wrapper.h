@@ -2,7 +2,7 @@
 #define FASTTEXT_WRAPPER_H
 
 #include <nan.h>
-#include <fasttext/fasttext.h>
+#include "../libraries/fastText/src/fasttext/fasttext.h"
 
 // class FasttextWrapper : public Nan::ObjectWrap {
 //  public:
