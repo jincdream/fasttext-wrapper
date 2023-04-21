@@ -8,7 +8,8 @@
       ],
       "cflags!": ["-fno-exceptions"],
       "cflags_cc!": ["-fno-exceptions"],
-      "libraries": ["-lfasttext", "-lpthread"]
+      "libraries": ["-L../libraries/fastText/build"],
+      "ldflags": ["-lfasttext"]
     }
   ]
 }
