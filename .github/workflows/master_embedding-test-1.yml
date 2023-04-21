@@ -28,28 +28,28 @@ jobs:
         id: cache      
         uses: actions/cache@v2
         with:
-          path: ./libraries/model
-          key: ${{ runner.os }}-model-${{ hashFiles('./libraries/model/cc.en.300.bin') }}
+          path: libraries/model
+          key: ${{ runner.os }}-model-${{ hashFiles('libraries/model/cc.en.300.bin') }}
     
       
       - name: Download FastText pre-trained model
         if: steps.cache.outputs.cache-hit != 'true'
         run: |
-          mkdir -p ./libraries/model
-          wget -O ./libraries/model/cc.en.300.bin.gz https://dl.fbaipublicfiles.com/fasttext/vectors-crawl/cc.en.300.bin.gz
-          gzip -d ./libraries/model/cc.en.300.bin.gz
-          rm -r ./libraries/model/cc.en.300.bin.gz  
+          mkdir -p libraries/model
+          wget -O libraries/model/cc.en.300.bin.gz https://dl.fbaipublicfiles.com/fasttext/vectors-crawl/cc.en.300.bin.gz
+          gzip -d libraries/model/cc.en.300.bin.gz
+          rm -f libraries/model/cc.en.300.bin.gz  
 
       - name: Prepare artifact
         run: |
           mkdir artifact
-          rsync -av --exclude="binding.gyp" ./ ./artifact/
+          rsync -av --exclude="binding.gyp" . artifact/
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
           name: node-app
-          path: ./artifact
+          path: artifact
 
   deploy:
     runs-on: ubuntu-latest
@@ -64,8 +64,6 @@ jobs:
         with:
           name: node-app
 
-      
-
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
@@ -74,11 +72,6 @@ jobs:
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_6DAF8E2F90F44B518869EA61DBFE2395 }}
           package: .
-
-      - name: Download FastText pre-trained model
-        run: |
-          mkdir -p models
-          wget -O models/cc.en.300.bin.gz https://dl.fbaipublicfiles.com/fasttext/vectors-crawl/cc.en.300.bin.gz
 
       - name: Install PM2
         run: npm install pm2 -g

@@ -27,7 +27,7 @@ npm start
 Copy code
 curl -X POST \
      -H "Content-Type: application/json" \
-     -d '{"word": "halleo world"}' \
+     -d '{"word": "ai world"}' \
      http://localhost:4000/embedding/en
 ```
 

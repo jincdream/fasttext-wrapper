@@ -3,7 +3,7 @@ node_modules
 libraries/*
 # 日志文件
 *.log
-
+.DS_Store
 # 运行时数据
 pids
 *.pid
