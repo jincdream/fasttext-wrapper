@@ -1,5 +1,6 @@
 #!/bin/bash
 
+mkdir -p libraries
 # Go to the libraries directory
 cd libraries
 
