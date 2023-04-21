@@ -24,7 +24,7 @@ DEFS_Debug := \
 CFLAGS_Debug := \
 	-O0 \
 	-gdwarf-2 \
-	-mmacosx-version-min=10.13 \
+	-mmacosx-version-min=10.15 \
 	-arch x86_64 \
 	-Wall \
 	-Wendif-labels \
@@ -37,7 +37,7 @@ CFLAGS_C_Debug := \
 
 # Flags passed to only C++ files.
 CFLAGS_CC_Debug := \
-	-std=gnu++14 \
+	-std=gnu++17 \
 	-stdlib=libc++ \
 	-fno-rtti \
 	-fno-exceptions \
@@ -50,13 +50,13 @@ CFLAGS_OBJC_Debug :=
 CFLAGS_OBJCC_Debug :=
 
 INCS_Debug := \
-	-I/Users/jinc/Library/Caches/node-gyp/16.15.1/include/node \
-	-I/Users/jinc/Library/Caches/node-gyp/16.15.1/src \
-	-I/Users/jinc/Library/Caches/node-gyp/16.15.1/deps/openssl/config \
-	-I/Users/jinc/Library/Caches/node-gyp/16.15.1/deps/openssl/openssl/include \
-	-I/Users/jinc/Library/Caches/node-gyp/16.15.1/deps/uv/include \
-	-I/Users/jinc/Library/Caches/node-gyp/16.15.1/deps/zlib \
-	-I/Users/jinc/Library/Caches/node-gyp/16.15.1/deps/v8/include \
+	-I/Users/jinc/Library/Caches/node-gyp/18.16.0/include/node \
+	-I/Users/jinc/Library/Caches/node-gyp/18.16.0/src \
+	-I/Users/jinc/Library/Caches/node-gyp/18.16.0/deps/openssl/config \
+	-I/Users/jinc/Library/Caches/node-gyp/18.16.0/deps/openssl/openssl/include \
+	-I/Users/jinc/Library/Caches/node-gyp/18.16.0/deps/uv/include \
+	-I/Users/jinc/Library/Caches/node-gyp/18.16.0/deps/zlib \
+	-I/Users/jinc/Library/Caches/node-gyp/18.16.0/deps/v8/include \
 	-I$(srcdir)/node_modules/nan \
 	-I$(srcdir)/libraries/fastText/src
 
@@ -79,7 +79,7 @@ DEFS_Release := \
 CFLAGS_Release := \
 	-O3 \
 	-gdwarf-2 \
-	-mmacosx-version-min=10.13 \
+	-mmacosx-version-min=10.15 \
 	-arch x86_64 \
 	-Wall \
 	-Wendif-labels \
@@ -92,7 +92,7 @@ CFLAGS_C_Release := \
 
 # Flags passed to only C++ files.
 CFLAGS_CC_Release := \
-	-std=gnu++14 \
+	-std=gnu++17 \
 	-stdlib=libc++ \
 	-fno-rtti \
 	-fno-exceptions \
@@ -105,13 +105,13 @@ CFLAGS_OBJC_Release :=
 CFLAGS_OBJCC_Release :=
 
 INCS_Release := \
-	-I/Users/jinc/Library/Caches/node-gyp/16.15.1/include/node \
-	-I/Users/jinc/Library/Caches/node-gyp/16.15.1/src \
-	-I/Users/jinc/Library/Caches/node-gyp/16.15.1/deps/openssl/config \
-	-I/Users/jinc/Library/Caches/node-gyp/16.15.1/deps/openssl/openssl/include \
-	-I/Users/jinc/Library/Caches/node-gyp/16.15.1/deps/uv/include \
-	-I/Users/jinc/Library/Caches/node-gyp/16.15.1/deps/zlib \
-	-I/Users/jinc/Library/Caches/node-gyp/16.15.1/deps/v8/include \
+	-I/Users/jinc/Library/Caches/node-gyp/18.16.0/include/node \
+	-I/Users/jinc/Library/Caches/node-gyp/18.16.0/src \
+	-I/Users/jinc/Library/Caches/node-gyp/18.16.0/deps/openssl/config \
+	-I/Users/jinc/Library/Caches/node-gyp/18.16.0/deps/openssl/openssl/include \
+	-I/Users/jinc/Library/Caches/node-gyp/18.16.0/deps/uv/include \
+	-I/Users/jinc/Library/Caches/node-gyp/18.16.0/deps/zlib \
+	-I/Users/jinc/Library/Caches/node-gyp/18.16.0/deps/v8/include \
 	-I$(srcdir)/node_modules/nan \
 	-I$(srcdir)/libraries/fastText/src
 
@@ -147,7 +147,7 @@ $(obj).$(TOOLSET)/$(TARGET)/%.o: $(obj)/%.cc FORCE_DO_CMD
 LDFLAGS_Debug := \
 	-undefined dynamic_lookup \
 	-Wl,-search_paths_first \
-	-mmacosx-version-min=10.13 \
+	-mmacosx-version-min=10.15 \
 	-arch x86_64 \
 	-L$(builddir) \
 	-stdlib=libc++
@@ -159,7 +159,7 @@ LIBTOOLFLAGS_Debug := \
 LDFLAGS_Release := \
 	-undefined dynamic_lookup \
 	-Wl,-search_paths_first \
-	-mmacosx-version-min=10.13 \
+	-mmacosx-version-min=10.15 \
 	-arch x86_64 \
 	-L$(builddir) \
 	-stdlib=libc++

@@ -18,19 +18,6 @@ jobs:
         with:
           node-version: '18.x'
 
-      - name: Install FastText
-        run: |
-          mkdir -p libraries
-          cd libraries
-          git clone https://github.com/facebookresearch/fastText.git
-          cd fastText
-          mkdir build && cd build
-          cmake ..
-          make && make install
-          cd ../../..
-          node-gyp configure
-          node-gyp build
-
       - name: npm install, build, and test
         run: |
           npm install
@@ -56,6 +43,11 @@ jobs:
         with:
           name: node-app
 
+      - name: Download FastText pre-trained model
+        run: |
+          mkdir -p ./libraries/model
+          wget -O ./libraries/model/cc.en.300.bin.gz https://dl.fbaipublicfiles.com/fasttext/vectors-crawl/cc.en.300.bin.gz
+
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
@@ -64,6 +56,11 @@ jobs:
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_6DAF8E2F90F44B518869EA61DBFE2395 }}
           package: .
+
+      - name: Download FastText pre-trained model
+        run: |
+          mkdir -p models
+          wget -O models/cc.en.300.bin.gz https://dl.fbaipublicfiles.com/fasttext/vectors-crawl/cc.en.300.bin.gz
 
       - name: Install PM2
         run: npm install pm2 -g

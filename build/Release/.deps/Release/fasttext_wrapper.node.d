@@ -1,1 +1,1 @@
-cmd_Release/fasttext_wrapper.node := c++ -bundle -undefined dynamic_lookup -Wl,-search_paths_first -mmacosx-version-min=10.13 -arch x86_64 -L./Release -stdlib=libc++  -o Release/fasttext_wrapper.node Release/obj.target/fasttext_wrapper/src/fasttext_wrapper.o -lfasttext -lpthread
+cmd_Release/fasttext_wrapper.node := c++ -bundle -undefined dynamic_lookup -Wl,-search_paths_first -mmacosx-version-min=10.15 -arch x86_64 -L./Release -stdlib=libc++  -o Release/fasttext_wrapper.node Release/obj.target/fasttext_wrapper/src/fasttext_wrapper.o -lfasttext -lpthread
