@@ -1,0 +1,12 @@
+{
+    "apps": [
+      {
+        "name": "node-server",
+        "script": "server.js",
+        "watch": true,
+        "instances": "max",
+        "exec_mode": "cluster"
+      }
+    ]
+  }
+  

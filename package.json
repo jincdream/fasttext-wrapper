@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "npm run build": "sh build.sh"
+  
   },
   "author": "",
   "license": "ISC",
