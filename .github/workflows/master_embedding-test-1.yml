@@ -20,9 +20,9 @@ jobs:
 
       - name: Install FastText
         run: |
-          cd libraries
+          cd ./libraries
           git clone https://github.com/facebookresearch/fastText.git
-          cd fastText
+          cd ./fastText
           mkdir build && cd build
           cmake ..
           make && make install
