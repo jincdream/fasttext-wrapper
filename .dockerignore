@@ -1,0 +1,13 @@
+# 排除所有的 .git 相关文件
+.git
+.gitignore
+
+# 排除 node_modules 目录
+node_modules
+
+# 排除所有的 .log 文件
+*.log
+
+libraries/**
+model/**
+src/build/**

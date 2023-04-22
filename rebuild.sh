@@ -1,4 +1,5 @@
 #!/bin/bash
+rm -rf libraries/fastText && rm -rf libraries/build
 
 mkdir -p libraries
 # Go to the libraries directory
@@ -18,9 +19,6 @@ cmake -DCMAKE_INSTALL_PREFIX=./build ..
 
 # Build fastText
 make && make install
-
-mkdir -p ../../build/Release
-cp libfasttext.so ../../build/Release
 
 cd ../../../
 

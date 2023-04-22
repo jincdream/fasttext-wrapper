@@ -29,9 +29,12 @@ jobs:
     - name: Build and push container image to registry
       uses: docker/build-push-action@v2
       with:
+        context: .
         push: true
         tags: mcr.microsoft.com/${{ secrets.AzureAppService_ContainerUsername_b32b2649e8874bdaa90f7518efb36209 }}/appsvc/staticsite:${{ github.sha }}
-        file: ./Dockerfile
+        pull: true
+        builder: docker.io/library/femd
+
 
   deploy:
     runs-on: ubuntu-latest
