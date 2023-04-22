@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "rbuild": "sh rebuild.sh"
+    "build": "sh rebuild.sh"
   },
   "author": "",
   "license": "ISC",

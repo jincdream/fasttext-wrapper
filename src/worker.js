@@ -6,7 +6,7 @@ const FasttextWrapper = new fasttext.FasttextWrapper();
 console.info('load star')
 console.info(path.resolve(__dirname,'../libraries/model/cc.en.300.bin'))
 console.time('load-model');
-// FasttextWrapper.loadModel(path.resolve(__dirname,'../libraries/model/cc.en.300.bin'));
+FasttextWrapper.loadModel(path.resolve(__dirname,'../libraries/model/cc.en.300.bin'));
 console.timeEnd('load-model');
 parentPort.postMessage({
     type: 'loaded',
