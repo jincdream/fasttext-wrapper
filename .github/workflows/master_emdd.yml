@@ -32,7 +32,7 @@ jobs:
         context: .
         push: true
         tags: mcr.microsoft.com/${{ secrets.AzureAppService_ContainerUsername_b32b2649e8874bdaa90f7518efb36209 }}/appsvc/staticsite:${{ github.sha }}
-        file: deploy/Dockerfile
+        file: ./Dockerfile
 
   deploy:
     runs-on: ubuntu-latest
