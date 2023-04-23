@@ -8,6 +8,8 @@ node_modules
 # 排除所有的 .log 文件
 *.log
 
-libraries/**
-model/**
+libraries/fastText/build
+model
+models
 src/build/**
+models/**

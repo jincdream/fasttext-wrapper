@@ -27,7 +27,8 @@ cd src
 # Exit the fastText build directory
 
 # Configure node-gyp
-node-gyp configure && node-gyp build && cd .. && rm -rf libraries/fastText
+node-gyp configure
+node-gyp build
 
 # Build the addon
 

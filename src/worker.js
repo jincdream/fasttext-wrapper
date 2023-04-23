@@ -1,12 +1,13 @@
 const path = require('path');
 const { parentPort } = require('worker_threads');
-const fasttext = require(path.resolve(__dirname,'./build/Release/fasttext_wrapper'));
+console.log(path.resolve(__dirname,'../build/Release/fasttext_wrapper'),'22')
+const fasttext = require(path.resolve(__dirname,'../build/Release/fasttext_wrapper'));
 const FasttextWrapper = new fasttext.FasttextWrapper();
-
+const model = path.resolve(__dirname,'./models/'+process.env.MODEL_NAME)
 console.info('load star')
-console.info(path.resolve(__dirname,'./models/cc.en.300.bin'))
+console.info(model)
 console.time('load-model');
-FasttextWrapper.loadModel(path.resolve(__dirname,'./models/cc.en.300.bin'));
+FasttextWrapper.loadModel(model);
 console.timeEnd('load-model');
 parentPort.postMessage({
     type: 'loaded',
