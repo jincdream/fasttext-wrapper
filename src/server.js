@@ -6,7 +6,7 @@ const {embedding} = require(path.resolve(__dirname,'./embedding'));
 
 app.use(express.json());
 app.get('/',(req,res)=>{res.json({})})
-app.post('/embedding/en', async (req, res) => {
+app.post('/embedding/zh', async (req, res) => {
   const { word } = req.body;
   if (!word) {
     return res.status(400).send({ error: 'Please provide a word.' });

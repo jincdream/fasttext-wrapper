@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "sh rebuild.sh",
-    "start": "MODEL_NAME='cc.en.300.bin' node index.js"
+    "start": "MODEL_NAME='cc.zh.300.bin' node index.js"
   },
   "author": "",
   "license": "ISC",

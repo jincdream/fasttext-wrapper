@@ -30,8 +30,7 @@ temp
 src/build
 src/build/**
 src/models/**
-libraries/**
+
 model/**
 
 model
-models/**

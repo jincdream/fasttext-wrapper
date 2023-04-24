@@ -72,14 +72,14 @@
 
 # 基础镜像选择ubuntu:18.04
 FROM ubuntu:20.04 AS base
-ENV MODEL_NAME=cc.en.300.bin
+ENV MODEL_NAME=cc.zh.300.bin
 ENV LD_LIBRARY_PATH=./src:$LD_LIBRARY_PATH
 ENV DEBIAN_FRONTEND=noninteractive
 # 添加Ubuntu测试存储库
 # RUN echo "deb http://archive.ubuntu.com/ubuntu/ groovy main restricted" >> /etc/apt/sources.list
 
 # 安装C++11开发环境
-
+RUN apt-get install -y g++-11
 RUN apt-get update && apt-get install -y build-essential cmake
 # RUN apt-get update && apt-get install -y build-essential gcc-11 g++-11 cmake
 # 安装Node.js 18
@@ -115,14 +115,14 @@ RUN apt-get install -y cmake
 
 WORKDIR /app/libraries/fastText
 # 使用 make 编译 fastText 和 Node.js 应用程序
-RUN mkdir build && cd build && cmake ..
+RUN mkdir build -p && cd build && cmake ..
 
 RUN cd build && make && make install
 
 WORKDIR /app
-RUN apt install -y g++-11
 RUN node-gyp configure && node-gyp build
 
+RUN rm -rf ./libraries/fastText
 # 暴露应用程序的默认端口（如果您的应用程序使用的端口不同，请替换 8080）
 EXPOSE 8080
 CMD [ "node", "index.js" ]

@@ -14,11 +14,25 @@ parentPort.postMessage({
 })
 
 parentPort.on('message', async (data) => {
-    let {word, id} = data
+    let {word, id, method} = data
     console.log('word:',word)
-    console.time(`${word}embedding`);
-    const embedding = FasttextWrapper.getEmbedding(word);
-    console.timeEnd(`${word}embedding`);
+    let embedding = []
+    switch (method) {
+        case 'word':
+            console.time(`${word}embedding`);
+            embedding = FasttextWrapper.getEmbedding(word);
+            console.timeEnd(`${word}embedding`);
+            break;
+        case 'sentence':
+            console.time(`${word}embedding`);
+            embedding = FasttextWrapper.getSentenceVector(word);
+            console.timeEnd(`${word}embedding`);
+            break;
+        default:
+            break;
+    }
+
+    
     parentPort.postMessage({
         type: 'embedding',
         data: embedding,
