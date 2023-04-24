@@ -79,7 +79,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 # RUN echo "deb http://archive.ubuntu.com/ubuntu/ groovy main restricted" >> /etc/apt/sources.list
 
 # 安装C++11开发环境
-RUN apt-get install -y g++-11
+RUN apt-get update && apt-get upgrade -y
 RUN apt-get update && apt-get install -y build-essential cmake
 # RUN apt-get update && apt-get install -y build-essential gcc-11 g++-11 cmake
 # 安装Node.js 18
